@@ -1,0 +1,17 @@
+{
+ "compilerOptions": {
+    "target": "ESNext",
+      "moduleResolution": "node16",  
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "baseUrl": ".", // 👈 necessário para o "paths" funcionar
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
