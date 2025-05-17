@@ -17,13 +17,14 @@ import { useContext } from "react";
 import { AuthContext } from "@/context/context";
 import { useGetUsers } from "@/hooks/useGetUsers";
 import { UsersType } from "@/hooks/useMutationSignUp";
+import { format, parseISO } from "date-fns"
 
 interface PostTypes {
   id?: number;
   data?: string;
   titulo: string;
   conteudo: string;
-  usuario_id: number;
+  usuario_id: number 
 }
 
 const IntroForumComponent = () => {
@@ -34,21 +35,6 @@ const IntroForumComponent = () => {
 
   if (!data || !usersData) {
     return <p>Carregando...</p>;
-  }
-
-  function generateUserColor(userId: number): string {
-
-    const colors = [
-      "red",
-      "green",
-      "blue", 
-      "pink",
-      "orange", 
-      "Magenta ", 
-      "violet"
-    ];
-    const index = userId % colors.length; 
-    return colors[index];
   }
 
   function getLyricsInitialUsername(nome: string | undefined, fallback: string) {
@@ -97,13 +83,17 @@ const IntroForumComponent = () => {
                   (user: UsersType) => user.id === post.usuario_id
                 );
                 const iniciais = getLyricsInitialUsername(usuario?.nome, InititalLyricsUsername);
-                const avatarColor = generateUserColor(post.usuario_id);
+                const dataFormatada = post.data ?format(parseISO(post.data), 'dd/MM/yyyy HH:mm'): 'data não disponível';
                 return (
                   <Link to={`/individualPost/${post.id}`} key={post.id}>
+                    <div className="flex items-center justify-between !mb-2">
+                      <p className="text-sm flex items-center gap-2 text-zinc-400"><p className="font-semibold text-zinc-100">autor:</p> {usuario.nome}</p>
+                      <p className="text-sm text-zinc-500">{dataFormatada}</p>
+                    </div>
+
                     <CardTopic>
                       <AvatarUser
-                        className="!text-white !text-[18px]"
-                        style={{ backgroundColor: avatarColor }}
+                        className="!text-white !text-[18px] bg-violet-500"
                       >
                         {iniciais}
                       </AvatarUser>

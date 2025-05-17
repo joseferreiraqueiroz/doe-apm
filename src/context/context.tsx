@@ -9,8 +9,7 @@ interface AuthContextType {
   loginWithGoogle: () => void;
   logout: () => void;
   username: string
-  idUsername: number
-  
+  idUsername: number | null
 }
 
 interface DecodedToken {
@@ -30,13 +29,22 @@ interface AuthProviderProps {
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticate, setIsAuthenticate] = useState(false);
   const [username, setUsername] = useState('')
-  const [idUsername, setIdUsername] = useState(0)
+  const [idUsername, setIdUsername] = useState<number | null>(null);
   const navigate = useNavigate();
 
-  const login = (token: string) => {
-    localStorage.setItem("Authtoken", token);
+const login = (token: string) => {
+  localStorage.setItem("Authtoken", token);
+
+  try {
+    const tokenDecoded: DecodedToken = jwtDecode(token);
+    setUsername(tokenDecoded.nome);
+    setIdUsername(tokenDecoded.id);
     setIsAuthenticate(true);
-  };
+  } catch (error) {
+    setIsAuthenticate(false);
+    console.log(error)
+  }
+};
 
   const loginWithGoogle = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -59,10 +67,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const tokenJWT = localStorage.getItem("Authtoken");
     const tokenGoogle = localStorage.getItem("GoogleToken");
-
+    
     if (tokenJWT) {
       try {
         const tokenDecoded: DecodedToken = jwtDecode(tokenJWT);
+        console.log(tokenDecoded)
         const username = tokenDecoded.nome
         const idUsername = tokenDecoded.id
         setUsername(username)

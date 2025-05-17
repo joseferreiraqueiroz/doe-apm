@@ -12,6 +12,7 @@ export const IndividualPostContainer = styled.div`
 export const ContainerPost = styled.div`
     display: flex;
     gap: 2rem;
+  
     max-width: 70rem;
     img{
           width: 60px ;

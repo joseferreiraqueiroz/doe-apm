@@ -6,7 +6,7 @@ import { toast } from "sonner"
 interface PostTypes{
     titulo: string,
     conteudo: string,
-    usuario_id: number
+    usuario_id: number | null;
 }
 
 export async function PublicPost (data: PostTypes) {

@@ -4,15 +4,13 @@ import { toast } from "sonner";
 import { client } from "@/main";
 
 export interface ResponsePostType{
-    post_id?: number,
-    conteudo: string
+    post_id: number,
+    conteudo: string,
+    usuario_id: number | null
 }
 
-const responsePost = async ({post_id, conteudo}: ResponsePostType) => {
-  const response = await api.post('/respostas', {
-    post_id: post_id,
-    conteudo: conteudo
-  });
+const responsePost = async (data: ResponsePostType) => {
+  const response = await api.post('/respostas', data);
   return response.data;
 };
 

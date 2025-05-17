@@ -3,15 +3,18 @@ import { useParams } from "react-router-dom"
 import { ContainerPost, PostContent } from "../../styles"
 import { ResponsePost } from "../ResponseContent.tsx/styles"
 import { Heart } from "phosphor-react"
+import { format, parseISO } from "date-fns"
 interface ResponsePost{
     resposta_id: number,
     resposta_conteudo: string
     resposta_usuario_nome: string | null
+    resposta_data: string 
   }
 
 const AllResponsesPostComponent = () => {
     const {id} = useParams()
     const {data} = useIndividualPost(id as string)
+
     return (
     <>
     <div className="text-2xl text-zinc-300 font-bold !ml-[6rem]">
@@ -20,18 +23,19 @@ const AllResponsesPostComponent = () => {
             )}
           </div>
            {data.respostas.map((respostas: ResponsePost) =>{
+             const dataFormatada = format(parseISO(respostas.resposta_data), 'dd/MM/yyyy HH:mm');
             return (
               <ContainerPost>
-              <img src="https://github.com/diego3g.png" alt="" />
+              <img src="https://github.com/diego3g.png" alt="" className="invisible"/>
               <div className="flex flex-col gap-5 flex-1">
               <PostContent>
               <div className="flex flex-col gap-5 leading-relaxed">
                 <div className="flex flex-col">
                   <span className="text-[14px] text-zinc-400 font-bold">
-                    Carolina Marques Brandes
+                    {respostas.resposta_usuario_nome}
                   </span>
                   <span className="text-[12px] text-zinc-500">
-                    14/04/25 às 08:51 | Editado em 15/04/2025
+                   {dataFormatada}
                   </span>
                 </div>
                 <div>
@@ -48,7 +52,6 @@ const AllResponsesPostComponent = () => {
         </ContainerPost>
             )
            })}
-          
     </>
   )
 }

@@ -36,8 +36,11 @@ const SchemaValidationPostForm = z.object({
 
 const PublicPostComponent = () => {
   const navigate = useNavigate()
-  const { isAuthenticate, idUsername } = useContext(AuthContext)
-  console.log(idUsername)
+  const { isAuthenticate, idUsername, username} = useContext(AuthContext)
+  if(!idUsername){
+    console.log('sem id')
+  }
+
   useEffect(() => {
       if (!isAuthenticate) {
         navigate("/");
@@ -66,13 +69,22 @@ const PublicPostComponent = () => {
       console.log(err)
     }
   }
-
+  function getLyricsInitialUsername(nome: string | undefined, fallback: string) {
+    if (!nome) return fallback;
+    const partes = nome.trim().split(" ");
+    const primeiraLetra = partes[0]?.charAt(0).toUpperCase() || "";
+    const segundaLetra = partes[1]?.charAt(0).toUpperCase() || "";
+    return primeiraLetra + segundaLetra;
+  }
+  const InitialLyricUsername = username[0]
   return (
     <>
       <HeaderComponentForum />
       <IndividualPostContainer>
         <ContainerPost>
-          <img src="https://github.com/diego3g.png" alt="" />
+          <div className="rounded-full h-[60px] w-[60px] flex bg-violet-500 items-center justify-center font-semibold">
+            {getLyricsInitialUsername(username, InitialLyricUsername )}
+          </div>
           <div className="flex flex-col gap-5 flex-1">
             <div className="flex items-center gap-2 text-sm text-zinc-400 font-bold">
               <span>
@@ -87,7 +99,7 @@ const PublicPostComponent = () => {
               <div className="flex flex-col gap-5 leading-relaxed flex-1">
                 <div className="flex flex-col ">
                   <span className="text-[14px] text-zinc-400 font-bold">
-                    Carolina Marques Brandes
+                    {username}
                   </span>
                 </div>
                 <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleSubmitFormPost)}>
