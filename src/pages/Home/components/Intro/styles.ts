@@ -14,27 +14,27 @@ export const IntroContent = styled.div`
   width: 100%;
   text-align: center;
   padding: 1rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   gap: 1rem;
   h1 {
     font: ${mixins.fonts.titleXL};
     font-weight: 500;
-    display: flex;
     gap: 0.75rem;
-    flex-wrap: wrap;
   }
-  p {
-    font: ${mixins.fonts.textL};
+ 
+    p {
+      max-width: 48rem;
+      margin: 0 auto;
+    font-size: 18px;
     color: ${props => props.theme["gray-300"]};
   }
 `;
-export const GradientText = styled.h1`
-  background: linear-gradient(90deg, #5CE1E6, #8047F8, #8047F8, #5CE1E6);
+export const GradientText = styled.span`
+   background: linear-gradient(90deg, #a259ff, #00e6c3);
   -webkit-background-clip: text;
-  color: transparent;
-`
+  -webkit-text-fill-color: transparent;
+  display: inline; 
+  white-space: nowrap; 
+`;
 export const IntroText = styled.p`
   background-color: black;
   margin-top: 3.5rem;
@@ -58,7 +58,7 @@ export const DonationSocial = styled.div`
     font-weight: bold;
     text-transform: uppercase;
     background-color: ${props => props.theme.white};
-    border-radius: 6px;
+    border-radius: 6px ;
     color: ${props => props.theme["brand-purple"]};
     transition: 0.2s;
     cursor: pointer;
@@ -101,7 +101,7 @@ export const CampainHighlit = styled.div`
 `
 export const VideoPlayer = styled.div`
   background-color: ${props => props.theme["gray-900"]};
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0 ;
   display: flex;
   align-items: center;
   justify-content: space-between;

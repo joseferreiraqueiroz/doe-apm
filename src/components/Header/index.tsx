@@ -3,7 +3,6 @@ import {
   ButtonLogin,
   HeaderButtons,
   HeaderContainer,
-  NavBar,
 } from "./styles";
 
 import Logo from "../../assets/Logo.svg";
@@ -36,13 +35,9 @@ const HeaderComponent = () => {
           </Link>
           <PopoverComponent ButtonVariant="square"/>
         </HeaderButtons>
+      
       </HeaderContainer>
-      <NavBar>
-        <span>
-         Faça uma doação e nos ajude a formar um lugar melhor |{" "}
-          <Link to="/loginForm">Realizar doação agora!</Link>
-        </span>
-      </NavBar>
+     
     </>
   );
 };

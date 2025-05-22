@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 export const ItensMove = styled.div`
   background: #0d0d0d ;
-  padding: 3rem 0;
+  padding: 6rem 0;
+  
 `
 export const ItensMoveContent = styled.div`
-  width: 30%;
+  width: 50%;
   margin: 0 auto; 
   gap: 1rem;
   span{

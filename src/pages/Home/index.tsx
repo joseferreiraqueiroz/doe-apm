@@ -12,11 +12,13 @@ import ImpactSectionComponent from "./components/ImpactSection";
 import { Footer } from "@/components/Footer";
 import HiringComponent from "./components/HiringComponent";
 import ItensMoveComponent from "./components/ItensMove";
+import { CardsInformation } from "./components/CardsInformation";
+import { FaqComponent } from "./components/FAQ";
 
 export function HomeComponent() {
+
   return (
    <>
-    
       <HeaderComponent />
       <HomeParent>
         <IntroComponent />
@@ -33,6 +35,8 @@ export function HomeComponent() {
       </ContributorsSection>
       <ImpactSectionComponent />
       <ItensMoveComponent/>
+     <CardsInformation/>
+    <FaqComponent/>
       <Footer/>
     </>
   );

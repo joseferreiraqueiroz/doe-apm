@@ -5,6 +5,7 @@ import { ArrowRightCircle } from "lucide-react"
 const ItensMoveComponent = () => {
   return (
     <ItensMove>
+      <div className="!max-w-[90rem] !m-auto !w-full">
     <ItensMoveContent>
       <span>solução completa!_</span>
       <p>
@@ -31,6 +32,7 @@ const ItensMoveComponent = () => {
           <button>Entrar</button>
         </div>
       </FaqContainer>
+      </div>
   </ItensMove>
   )
 }

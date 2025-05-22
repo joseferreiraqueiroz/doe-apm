@@ -6,17 +6,26 @@ import {
     CarouselPrevious,
   } from "@/components/ui/carousel";
   import { CardContainer, CarouselContainer } from "./styles";
+  import ayumiImage from '../../../../assets/ayumi.jpeg'
+  import eduardo from '../../../../assets/eduardo.jpeg'
+  import victor from '../../../../assets/victor.jpeg'
   
+
   const collaborators = [
     {
       name: "José Ítalo",
       role: "Desenvolvedor",
       avatar: "https://avatars.githubusercontent.com/octocat",
     },
+      {
+      name: "Victor Hugo",
+      role: "Project Menager",
+      avatar: [victor],
+    },
     {
       name: "Laura Ayumi",
       role: "Gerente",
-      avatar: "https://avatars.githubusercontent.com/addyosmani",
+      avatar: [ayumiImage],
     },
     {
         name: "Matheus Pereira",
@@ -31,7 +40,7 @@ import {
     {
       name: "Eduardo Rodriguez",
       role: "UI Designer",
-      avatar: "https://avatars.githubusercontent.com/mojombo",
+      avatar:[eduardo],
     },
   ];
   
@@ -50,7 +59,7 @@ import {
                       <footer>{collab.role}</footer>
                     </div>
                     <div>
-                      <img src={collab.avatar} alt={collab.name} />
+                      <img src={collab.avatar} alt={collab.name} className="object-cover"/>
                     </div>
                   </div>
                 </CardContainer>
