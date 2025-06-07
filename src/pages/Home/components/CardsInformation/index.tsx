@@ -49,7 +49,7 @@ export function CardsInformation() {
         {cards.map((e, index) => (
           <div
             key={index}
-            className="w-[400px] h-[250px] border-zinc-800 border-2 !p-8 flex flex-col gap-4 rounded-lg 
+            className="w-[400px] h-[250px] border-zinc-600 border-2 !p-8 flex flex-col gap-4 rounded-lg 
               shadow-md 
               transform 
               transition-transform 

@@ -11,6 +11,7 @@ import {
 } from "./styles";
 import Logo from '../../../../assets/Logo.svg'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const IntroComponent = () => {
   const [playVideo, setPlayVideo] = useState(false)
@@ -30,7 +31,11 @@ const IntroComponent = () => {
           Tenha uma plataforma de doação para chamar de sua. Vá mais longe com
           estratégias e design sob-medida.
         </p>
+       
       </IntroContent>
+     <Link to="/dataDonation">
+       <button className="bg-white text-violet-500 font-bold !p-4 rounded-md hover:bg-slate-100 duration-200 cursor-pointer !mt-2">Gerenciar dados</button>
+     </Link>
     </IntroContainer>
 
       <div className="relative w-full !mt-[12rem] !px-[20rem] h-">
@@ -40,7 +45,7 @@ const IntroComponent = () => {
     background: "linear-gradient(to right, #00e6c3, #ff6cff, #a259ff)"
   }}
 />
-        <VideoPlayer className="relative z-10 ">
+        <VideoPlayer className="relative  ">
           <VideoPlayerText>
             <div>
               <img src={Logo} alt="" />

@@ -14,7 +14,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 export const client = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={defaultTheme}>
+  <ThemeProvider theme={defaultTheme} >
     <GlobalStyle />
     <Toaster />
     <StrictMode>

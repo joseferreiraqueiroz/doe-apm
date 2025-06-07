@@ -6,6 +6,7 @@ import RegisterForm from './pages/Register'
 import ForumPage from './pages/Forum'
 import IndividualPostComponent from './pages/Forum/components/IndividualPost'
 import PublicPostComponent from './pages/Forum/components/PublicPost'
+import { DonationTableComponent } from './pages/DonationTable'
 const RouterApp = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const RouterApp = () => {
             <Route path='/forumPage' element={<ForumPage/>}/>
             <Route path="/individualPost/:id" element={<IndividualPostComponent />} />
             <Route path='/publicPost' element={<PublicPostComponent/>}/>
+             <Route path='/dataDonation' element={<DonationTableComponent/>}/>
         </Route>
     </Routes>
   )
